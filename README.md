@@ -51,6 +51,7 @@ chmod +x main.sh
 ./main.sh
 
 ```
+❗ Important Deployment Disclaimer: This infrastructure framework utilizes generic substitution tokens and configuration templates. System administrators must populate localized networking paths, cluster IDs, and credential parameters prior to runtime execution
 
 Upon launching, `main.sh` reads and processes the database files inside `DB/` to map out active connection strings, compiling device counts natively using standard Linux utilities (`awk`, `grep`). It presents an interactive terminal dashboard supporting 9 fundamental system provisioning states:
 
