@@ -1,0 +1,7 @@
+0 Primary_Zone_Alpha
+1 Primary_Zone_Beta
+2 Management_Office
+3 Secured_Vault_Antechamber
+4 Secured_Vault_Internal
+5 External_Perimeter_Entrance
+6 Secondary_Context_Camera

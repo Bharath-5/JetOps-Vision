@@ -1,0 +1,7 @@
+ClusterB    node-25@10.0.2.25    2001_RegionC-Branch_Alpha            DevKit    RTSP        Deployed
+ClusterB    node-26@10.0.2.26    2002_RegionC-Branch_Beta             DevKit    RTSP        Deployed
+ClusterB    node-27@10.0.2.27    2003_RegionC-Branch_Gamma            DevKit    Non-RTSP    Deployed
+ClusterB    node-28@10.0.2.28    2004_RegionD-Branch_Delta            DevKit    RTSP        Deployed
+ClusterB    node-29@10.0.2.29    2005_RegionD-Branch_Epsilon          Prod      RTSP        Deployed
+ClusterB    node-30@10.0.2.30    2006_RegionC-Branch_Zeta             DevKit    Non-RTSP    Pending
+ClusterB    node-31@10.0.2.31    2007_RegionD-Branch_Eta              DevKit    RTSP        Deployed

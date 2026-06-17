@@ -1,0 +1,462 @@
+{
+  "appname": "EDGE_CV_PIPELINE",
+  "cameras": [
+    {
+      "name": "xxxx_Secured_Antechamber_Alpha",
+      "camera_type": "Production_RTSP_Stream",
+      "id": 0,
+      "utilize": true,
+      "_CAMERA_TYPE_COMMENT_": "1=CameraV4L2 2=URI 3=MultiURI 4=RTSP",
+      "type": 4,
+      "url": "rtsp://rtsp_user_name:rtsp_password@rtsp_ip_addr1:554/streaming/channels/0801",
+      "drop_frames": true,
+      "drop_frames_interval": 10,
+      "latency": 10000,
+      "drop_on_latency": true,
+      "person_bbox_inflation": 15,
+      "_PROTOCOL_COMMENT_": "0=ALL_PROTOCOLS 1=TCP",
+      "protocols": 1,
+      "algorithms": [
+        {
+          "algo": "CAMERA_TAMPERING",
+          "_LINEFIRE_COORD_COMMENT_": "Area of crosssections to be considered in %",
+          "region_threshold": 10,
+          "bg_sub_threshold": 90,
+          "alarm_cooldown_period": 120000,
+          "algo_run_threshold": 10000,
+          "alarm_counter_threshold": 2,
+          "ssim_threshold": 45
+        },
+        {
+          "algo": "INTRUSION_DETECTION",
+          "frames_threshold": 2,
+          "delete_threshold": 10000,
+          "alarm_cooldown_period": 15000,
+          "start_hour": "14:00",
+          "end_hour": "03:00",
+          "pose_count_threshold": 15,
+          "movement_threshold": 135
+        },
+        {
+          "algo": "HAZARD_OR_WEAPON_DETECTION",
+          "handsup_frame_count": 5,
+          "handgun_frame_count": 5,
+          "alarm_cooldown_period": 120,
+          "delete_threshold": 60
+        },
+        {
+          "algo": "SAFETY_HELMET_DETECTION",
+          "start_score": 50,
+          "no_helmet_score": 45,
+          "helmet_score": 55,
+          "alarm_cooldown_period": 120
+        }
+      ]
+    },
+    {
+      "name": "xxxx_Primary_Zone_Alpha",
+      "camera_type": "Production_RTSP_Stream",
+      "id": 1,
+      "utilize": true,
+      "_CAMERA_TYPE_COMMENT_": "1=CameraV4L2 2=URI 3=MultiURI 4=RTSP",
+      "type": 4,
+      "url": "rtsp://rtsp_user_name:rtsp_password@rtsp_ip_addr2:554/streaming/channels/0401",
+      "drop_frames": true,
+      "drop_frames_interval": 12,
+      "latency": 10000,
+      "drop_on_latency": true,
+      "person_bbox_inflation": 15,
+      "_PROTOCOL_COMMENT_": "0=ALL_PROTOCOLS 1=TCP",
+      "protocols": 1,
+      "algorithms": [
+        {
+          "algo": "CAMERA_TAMPERING",
+          "region_threshold": 10,
+          "bg_sub_threshold": 90,
+          "alarm_cooldown_period": 120000,
+          "algo_run_threshold": 10000,
+          "alarm_counter_threshold": 2,
+          "ssim_threshold": 45
+        },
+        {
+          "algo": "INTRUSION_DETECTION",
+          "frames_threshold": 2,
+          "delete_threshold": 10000,
+          "alarm_cooldown_period": 15000,
+          "start_hour": "14:00",
+          "end_hour": "03:00",
+          "pose_count_threshold": 15,
+          "movement_threshold": 135
+        },
+        {
+          "algo": "HAZARD_OR_WEAPON_DETECTION",
+          "handsup_frame_count": 5,
+          "handgun_frame_count": 5,
+          "alarm_cooldown_period": 120,
+          "delete_threshold": 60
+        },
+        {
+          "algo": "SAFETY_HELMET_DETECTION",
+          "start_score": 50,
+          "no_helmet_score": 45,
+          "helmet_score": 55,
+          "alarm_cooldown_period": 120
+        },
+        {
+          "algo": "OBJECT_COMPLIANCE_TRACKING",
+          "start_score": 50,
+          "bag_score": 55,
+          "no_bag_score": 45,
+          "alarm_cooldown_period": 120000,
+          "delete_threshold": 10000
+        }
+      ]
+    },
+    {
+      "name": "xxxx_Secured_Vault_Internal",
+      "camera_type": "Production_RTSP_Stream",
+      "id": 2,
+      "utilize": true,
+      "_CAMERA_TYPE_COMMENT_": "1=CameraV4L2 2=URI 3=MultiURI 4=RTSP",
+      "type": 4,
+      "url": "rtsp://rtsp_user_name:rtsp_password@rtsp_ip_addr3:554/streaming/channels/0201",
+      "drop_frames": true,
+      "drop_frames_interval": 12,
+      "latency": 10000,
+      "drop_on_latency": true,
+      "person_bbox_inflation": 15,
+      "_PROTOCOL_COMMENT_": "0=ALL_PROTOCOLS 1=TCP",
+      "protocols": 1,
+      "algorithms": [
+        {
+          "algo": "CAMERA_TAMPERING",
+          "region_threshold": 10,
+          "bg_sub_threshold": 90,
+          "alarm_cooldown_period": 120000,
+          "algo_run_threshold": 10000,
+          "alarm_counter_threshold": 2,
+          "ssim_threshold": 45
+        },
+        {
+          "algo": "HAZARD_OR_WEAPON_DETECTION",
+          "handsup_frame_count": 5,
+          "handgun_frame_count": 5,
+          "alarm_cooldown_period": 120,
+          "delete_threshold": 60
+        },
+        {
+          "algo": "CROWD_DENSITY_MONITORING",
+          "roi_config": [
+            {
+              "roi": [
+                { "x": 0.285, "y": 0.799 },
+                { "x": 0.872, "y": 0.462 },
+                { "x": 0.97, "y": 0.96 },
+                { "x": 0.323, "y": 0.979 }
+              ],
+              "_OVERCROWDING_COORD_COMMENT_": "Top = 0, Middle = 1, Bottom = 2",
+              "coord_pos": 1
+            }
+          ],
+          "max_count": 3,
+          "evaluation_period": 500,
+          "alarm_cooldown_period": 300000
+        },
+        {
+          "algo": "SAFETY_HELMET_DETECTION",
+          "start_score": 50,
+          "no_helmet_score": 45,
+          "helmet_score": 55,
+          "alarm_cooldown_period": 120
+        },
+        {
+          "algo": "OBJECT_COMPLIANCE_TRACKING",
+          "start_score": 50,
+          "bag_score": 55,
+          "no_bag_score": 45,
+          "alarm_cooldown_period": 120000,
+          "delete_threshold": 10000
+        },
+        {
+          "algo": "LOITERING_DETECTION",
+          "loitering_timer_threshold": 120,
+          "alarm_cooldown_period": 300
+        },
+        {
+          "algo": "INTRUSION_DETECTION",
+          "frames_threshold": 2,
+          "delete_threshold": 10000,
+          "alarm_cooldown_period": 15000,
+          "start_hour": "14:00",
+          "end_hour": "03:00",
+          "pose_count_threshold": 15,
+          "movement_threshold": 135
+        }
+      ]
+    },
+    {
+      "name": "xxxx_External_Perimeter_Entrance",
+      "camera_type": "Production_RTSP_Stream",
+      "id": 3,
+      "utilize": true,
+      "_CAMERA_TYPE_COMMENT_": "1=CameraV4L2 2=URI 3=MultiURI 4=RTSP",
+      "type": 4,
+      "url": "rtsp://rtsp_user_name:rtsp_password@rtsp_ip_addr4:554/streaming/channels/0601",
+      "drop_frames": true,
+      "drop_frames_interval": 12,
+      "latency": 10000,
+      "drop_on_latency": true,
+      "person_bbox_inflation": 15,
+      "_PROTOCOL_COMMENT_": "0=ALL_PROTOCOLS 1=TCP",
+      "protocols": 1,
+      "algorithms": [
+        {
+          "algo": "CAMERA_TAMPERING",
+          "region_threshold": 10,
+          "bg_sub_threshold": 90,
+          "alarm_cooldown_period": 120000,
+          "algo_run_threshold": 10000,
+          "alarm_counter_threshold": 2,
+          "ssim_threshold": 45
+        },
+        {
+          "algo": "SAFETY_HELMET_DETECTION",
+          "start_score": 50,
+          "no_helmet_score": 45,
+          "helmet_score": 55,
+          "alarm_cooldown_period": 120
+        },
+        {
+          "algo": "HAZARD_OR_WEAPON_DETECTION",
+          "handsup_frame_count": 5,
+          "handgun_frame_count": 5,
+          "alarm_cooldown_period": 120,
+          "delete_threshold": 60
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "utilize": true,
+      "process_mode": 1,
+      "is_classifier": false,
+      "encoded_model_path": "assets/models/primary_detector/model_core.weights.enc",
+      "config_file_path": "assets/models/primary_detector/pipeline_inference_config.txt",
+      "unique_id": 1,
+      "interval": 0,
+      "batchsize": 4,
+      "compute_mode": "fp16"
+    },
+    {
+      "utilize": true,
+      "process_mode": 1,
+      "is_classifier": true,
+      "encoded_model_path": "assets/models/feature_extractor/model_core.etlt.enc",
+      "config_file_path": "assets/models/feature_extractor/pipeline_inference_config.txt",
+      "unique_id": 2,
+      "interval": 0,
+      "batchsize": 4,
+      "compute_mode": "fp16"
+    },
+    {
+      "utilize": true,
+      "process_mode": 2,
+      "is_classifier": true,
+      "encoded_model_path": "assets/models/secondary_classifier/model_core.weights.enc",
+      "config_file_path": "assets/models/secondary_classifier/pipeline_inference_config.txt",
+      "unique_id": 8,
+      "interval": 0,
+      "operate_on_gie_id": 1,
+      "operate_on_class_id": 0,
+      "batchsize": 4,
+      "compute_mode": "fp16"
+    },
+    {
+      "utilize": true,
+      "process_mode": 2,
+      "is_classifier": true,
+      "encoded_model_path": "assets/models/pose_estimation/model_core.onnx.enc",
+      "config_file_path": "assets/models/pose_estimation/pipeline_inference_config.txt",
+      "unique_id": 7,
+      "interval": 0,
+      "operate_on_gie_id": 1,
+      "operate_on_class_id": 0,
+      "batchsize": 1,
+      "compute_mode": "fp16"
+    }
+  ],
+  "app_settings": {
+    "asset_id": "EDGEDEVICE_2703_RegionA-Terminal_Nu",
+    "site_id": "SITE_2703_RegionA-Terminal_Nu",
+    "cust_id": "00000000-0000-0000-0000-000000000000",
+    "gpu_id": 0,
+    "nvbuf_memory_type": 0,
+    "default_window_width": 1920,
+    "default_window_height": 1080,
+    "api_calls": true,
+    "mqtt_publish": false,
+    "hooter": false,
+    "database": false,
+    "asset_heartbeat": true
+  },
+  "api_settings": {
+    "_THREADPOOL_COMMENT_": "Set 4 for Jetson Devices and above 8 for DGPU devices.",
+    "api_threadpool_size": 16,
+    "violation_endpoint": "https://api.yourdomain.com:8003/api/CVViolations",
+    "footfall_endpoint": "https://api.yourdomain.com:8003/api/v2/Footfall",
+    "heatmap_endpoint": "https://api.yourdomain.com:8003/api/v2/Retail/Heatmap",
+    "vehicle_count_endpoint": "https://api.yourdomain.com:8003/api/v1/KIMS/Vehicle/Count",
+    "facerec_endpoint": "https://api.yourdomain.com:8003/api/v1/SearchFace"
+  },
+  "mqtt_settings": {
+    "mqtt_broker": "127.0.0.1",
+    "mqtt_port": 1883,
+    "mqtt_username": "",
+    "mqtt_passphrase": "",
+    "_MQTT_QOS_": "QOS: 0,1,2",
+    "mqtt_qos": 2,
+    "CONFIG_TOPIC": "config",
+    "violations_topic": "telemetry/hub/%s",
+    "footfall_topic": "telemetry/hub/footfall",
+    "heatmap_topic": "telemetry/hub/heatmap",
+    "vehicle_count_topic": "telemetry/hub/vehicle_count",
+    "asset_heartbeat_topic": "telemetry/hub/asset_heartbeat"
+  },
+  "asset_heartbeat_settings": {
+    "asset_heartbeat_endpoint": "https://api.yourdomain.com:8002/api/v2/Asset/Heartbeat",
+    "interface_vpn": "tun0",
+    "interface_eth": "wlo1",
+    "asset_heartbeat_threshold": 300000,
+    "asset_cooldown_period": 300000
+  },
+  "database_settings": {
+    "db_name": "local.db",
+    "table_name": "edge_telemetry",
+    "footfall": true,
+    "violation": false,
+    "heatmap": false,
+    "footfall_query_threshold": 10,
+    "heatmap_query_threshold": 20,
+    "anpr_query_threshold": 10,
+    "violation_query_threshold": 25
+  },
+  "violation_settings": {
+    "violation_bbox": true,
+    "_BBOX_COMMENT_": "Bounding Box type: Rectangle:0, Circle:1",
+    "bbox_type": 1,
+    "bbox_thickness": 2,
+    "redaction": false,
+    "mask_violation_color": { "red": 1.0, "green": 0.65, "blue": 0.0 },
+    "helmet_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 },
+    "footfall_color": { "red": 0.0, "green": 1.0, "blue": 1.0 },
+    "ppe_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 },
+    "overcrowding_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 },
+    "mandown_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 },
+    "coat_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 },
+    "linefire_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 },
+    "workheight_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 },
+    "gun_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 },
+    "bag_violation_color": { "red": 1.0, "green": 0.0, "blue": 0.0 }
+  },
+  "performance_settings": {
+    "gst_caps_features_nvmm": "memory:NVMM",
+    "n_deocde_surfaces": 16,
+    "n_extra_surfaces": 1,
+    "source_reset_interval": 60000,
+    "enable_performance_measurement": 1,
+    "perf_measurement_interval_sec": 10
+  },
+  "streammux_settings": {
+    "live_source": 1,
+    "_BATCH_SIZE_COMMENT_": "Set 0 to override number of sources as batch size",
+    "batch_size": -1,
+    "width": 704,
+    "height": 288,
+    "enable_padding": 0,
+    "batched_push_timeout": 40000
+  },
+  "tracker_settings": {
+    "enable": 1,
+    "gpu_id": 0,
+    "width": 480,
+    "height": 256,
+    "enable_batch_process": 1,
+    "batch_config_set": 1,
+    "ll_config_file": "models/Tracker/tracker_config.yml",
+    "ll_lib_file": "libnvds_nvdcf.so",
+    "surface_type": 0,
+    "display_tracking_id": 1
+  },
+  "tiler_settings": {
+    "enable": 1,
+    "gpu_id": 0,
+    "nvbuf_memory_type": 0,
+    "_TILER_ROWS_COL_COMMENT_": "Override to not use calculated parameters",
+    "rows": 2,
+    "columns": 2,
+    "width": 960,
+    "height": 576
+  },
+  "osd_settings": {
+    "enable": 1,
+    "gpu_id": 0,
+    "nvbuf_memory_type": 0,
+    "draw_text": 1,
+    "draw_bbox": 1,
+    "draw_mask": 1,
+    "border_width": 1,
+    "text_size": 12,
+    "text_color_red": 1.0,
+    "text_color_green": 1.0,
+    "text_color_blue": 1.0,
+    "text_color_alpha": 1.0,
+    "text_bg_color_red": 0.3,
+    "text_bg_color_green": 0.3,
+    "text_bg_color_blue": 0.3,
+    "text_bg_color_alpha": 1.0,
+    "font": "Serif",
+    "enable_clock": 0,
+    "clock_x_offset": 800,
+    "clock_y_offset": 820,
+    "clock_text_size": 12,
+    "clock_color_red": 1.0,
+    "clock_color_green": 0.0,
+    "clock_color_blue": 0.0,
+    "clock_color_alpha": 0.0
+  },
+  "sink_settings": {
+    "enable": 1,
+    "source_id": 0,
+    "gpu_id": 0,
+    "nvbuf_memory_type": 0,
+    "qos": 0,
+    "sync": 0,
+    "_SINK_TYPE_COMMENT_": "1=FakeSink 2=EglSink 3=File 4=RTSPStreaming 5=Overlay",
+    "type": 1,
+    "rtsp_port": 8554,
+    "udp_port": 5000,
+    "_CONTAINER_TYPE_COMMENT_": "1=mp4 2=mkv",
+    "container": 1,
+    "_CODEC_TYPE_COMMENT_": "1=h264 2=h265 3=mpeg4",
+    "codec": 1,
+    "bitrate": 4000000,
+    "output_file": "output.mp4"
+  },
+  "alert_peripherals": [
+    {
+      "name": "peripheral_relay_01",
+      "utilize": true,
+      "ip_address": "192.168.0.169",
+      "port": 80,
+      "act_cameras": ["video1", "video2"]
+    },
+    {
+      "name": "peripheral_relay_02",
+      "utilize": true,
+      "ip_address": "192.168.0.170",
+      "port": 80,
+      "act_cameras": ["camera3", "camera4"]
+    }
+  ]
+}

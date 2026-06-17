@@ -1,0 +1,5 @@
+ClusterD    node-38@10.0.4.38    4001_RegionG-Site_East               DevKit    RTSP        Deployed
+ClusterD    node-39@10.0.4.39    4002_RegionG-Site_West               DevKit    RTSP        Deployed
+ClusterD    node-40@10.0.4.40    4003_RegionH-Site_North              Prod      Non-RTSP    Deployed
+ClusterD    node-41@10.0.4.41    4004_RegionH-Site_South              DevKit    Hybrid      Deployed
+ClusterD    node-42@10.0.4.42    4005_RegionG-Site_Central            DevKit    RTSP        Deployed

@@ -1,0 +1,6 @@
+ClusterC    node-32@10.0.3.32    3001_RegionE-Zone_One                DevKit    RTSP        Deployed
+ClusterC    node-33@10.0.3.33    3002_RegionE-Zone_Two                DevKit    Non-RTSP    Deployed
+ClusterC    node-34@10.0.3.34    3003_RegionE-Zone_Three              DevKit    RTSP        Deployed
+ClusterC    node-35@10.0.3.35    3004_RegionF-Zone_Four               Prod      Hybrid      Deployed
+ClusterC    node-36@10.0.3.36    3005_RegionF-Zone_Five               DevKit    RTSP        Maintenance
+ClusterC    node-37@10.0.3.37    3006_RegionE-Zone_Six                DevKit    RTSP        Deployed

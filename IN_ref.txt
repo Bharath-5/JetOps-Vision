@@ -1,0 +1,109 @@
+{
+  "name": "xxxx_Secured_Vault_Internal",
+  "camera_type": "Production_RTSP_Stream",
+  "asset_id": "aaaa",
+  "site_id": "SITE_2908_RegionI-Branch_Alpha",
+  "id": 4,
+  "utilize": true,
+  "_CAMERA_TYPE_COMMENT_": "1=CameraV4L2 2=URI 3=MultiURI 4=RTSP",
+  "type": 4,
+  "url": "rtsp://localhost:8621/stream1",
+  "drop_frames": false,
+  "drop_frames_interval": 5,
+  "latency": 20000,
+  "drop_on_latency": true,
+  "person_bbox_inflation": 0,
+  "_PROTOCOL_COMMENT_": "0=ALL_PROTOCOLS 1=TCP",
+  "protocols": 0,
+  "algorithms": [
+    {
+      "algo": "CAMERA_TAMPERING",
+      "_COMMENT_": "Calculates lens coverage or structural drift using SSIM thresholds.",
+      "region_threshold": 10,
+      "bg_sub_threshold": 95,
+      "alarm_cooldown_period": 120000,
+      "algo_run_threshold": 10000,
+      "alarm_counter_threshold": 2,
+      "ssim_threshold": 45
+    },
+    {
+      "algo": "HAZARD_OR_WEAPON_DETECTION",
+      "handsup_frame_count": 4,
+      "handgun_frame_count": 5,
+      "alarm_cooldown_period": 120000,
+      "delete_threshold": 60,
+      "roi_config": [
+        {
+          "roi": [
+            { "x": 0.43, "y": 0.368 },
+            { "x": 0.628, "y": 0.395 },
+            { "x": 0.693, "y": 0.969 },
+            { "x": 0.233, "y": 0.964 }
+          ],
+          "_ROI_COORD_COMMENT_": "Top = 0, Middle = 1, Bottom = 2",
+          "coord_pos": 2
+        }
+      ]
+    },
+    {
+      "algo": "CROWD_DENSITY_MONITORING",
+      "roi_config": [
+        {
+          "roi": [
+            { "x": 0.285, "y": 0.799 },
+            { "x": 0.872, "y": 0.462 },
+            { "x": 0.97, "y": 0.96 },
+            { "x": 0.323, "y": 0.979 }
+          ],
+          "_ROI_COORD_COMMENT_": "Top = 0, Middle = 1, Bottom = 2",
+          "coord_pos": 1
+        }
+      ],
+      "max_count": 3,
+      "evaluation_period": 500,
+      "alarm_cooldown_period": 120000
+    },
+    {
+      "algo": "SAFETY_HELMET_DETECTION",
+      "start_score": 50,
+      "no_helmet_score": 45,
+      "helmet_score": 55,
+      "alarm_cooldown_period": 120000
+    },
+    {
+      "algo": "OBJECT_COMPLIANCE_TRACKING",
+      "start_score": 50,
+      "bag_score": 55,
+      "no_bag_score": 45,
+      "alarm_cooldown_period": 120000,
+      "delete_threshold": 10000
+    },
+    {
+      "algo": "LOITERING_DETECTION",
+      "loitering_timer_threshold": 3600,
+      "alarm_cooldown_period": 240000
+    },
+    {
+      "algo": "INTRUSION_DETECTION",
+      "roi_config": [
+        {
+          "roi": [
+            { "x": 0.285, "y": 0.799 },
+            { "x": 0.872, "y": 0.462 },
+            { "x": 0.97, "y": 0.96 },
+            { "x": 0.323, "y": 0.979 }
+          ],
+          "_ROI_COORD_COMMENT_": "Top = 0, Middle = 1, Bottom = 2",
+          "coord_pos": 2
+        }
+      ],
+      "frames_threshold": 2,
+      "delete_threshold": 10000,
+      "alarm_cooldown_period": 120000,
+      "start_hour": "19:00",
+      "end_hour": "08:00",
+      "pose_count_threshold": 15,
+      "movement_threshold": 140
+    }
+  ]
+}

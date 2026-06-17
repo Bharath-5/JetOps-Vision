@@ -1,0 +1,107 @@
+	{
+            "name":"xxxx_Banking_Hall",
+            "camera_type":"Test",
+            "asset_id":"aaaa",
+            "site_id":"ssss",
+            "id":4,
+            "utilize":true,
+            "_CAMERA_TYPE_COMMENT_":"1=CameraV4L2 2=URI 3=MultiURI 4=RTSP",
+            "type":4,
+            "url":"rtsp://localhost:nnnn/stream1",
+            "drop_frames":false,
+            "drop_frames_interval":5,
+            "latency":20000,
+            "drop_on_latency":true,
+            "person_bbox_inflation":0,
+            "_PROTOCOL_COMMENT_": "0=ALL_PROTOCOLS 1=TCP",
+            "protocols":0,
+            "algorithms":[
+                {
+                    "algo":"CAMERA_TAMPERING",
+                    "_LINEFIRE_COORD_COMMENT_":"Area of crosssections to be considered in %",
+                    "region_threshold":10,
+                    "bg_sub_threshold":95,
+                    "alarm_cooldown_period":120000,
+                    "algo_run_threshold": 10000,
+                    "alarm_counter_threshold":2,
+                    "ssim_threshold": 45
+                },
+                {
+                    "algo":"LINE_OF_FIRE",
+                    "rrroiconfig": [
+                        {
+                            "roi": [
+                              { "x": 0.170, "y": 0.440 },
+                              { "x": 0.392, "y": 0.408 },
+                              { "x": 0.719, "y": 0.968 },
+                              { "x": 0.258, "y": 0.975 }
+                            ],
+                            "_LINEFIRE_COORD_COMMENT_":"Top = 0, Middle = 1, Bottom = 2",
+                            "coord_pos":2
+                        }
+                    ],
+                    "frames_threshold":2,
+                    "delete_threshold":10000,
+                    "alarm_cooldown_period":120000,
+                    "start_hour": "19:00",
+                    "end_hour": "8:00",
+                    "pose_count_threshold": 15,
+                    "movement_threshold": 140
+                },
+                {
+                    "algo":"GUN_CONTROL",
+                    "handsup_frame_count":4,
+                    "handgun_frame_count":5,
+                    "alarm_cooldown_period":120,
+                    "delete_threshold":60,
+                    "rrroiconfig": [
+                        {
+                            "roi": [
+                              { "x": 0.170, "y": 0.440 },
+                              { "x": 0.392, "y": 0.408 },
+                              { "x": 0.719, "y": 0.968 },
+                              { "x": 0.258, "y": 0.975 }
+                            ],
+                            "_LINEFIRE_COORD_COMMENT_":"Top = 0, Middle = 1, Bottom = 2",
+                            "coord_pos":2
+                        }
+                    ]
+                  },
+                 {
+                       "algo":"MASK_COMPLIANCEE",
+                       "start_score":50,
+                       "face_score":45,
+                       "mask_score":55,
+                       "alarm_cooldown_period":120000,
+                       "delete_threshold":10000,
+                       "solo_exemption":false
+                   },
+                {
+                    "algo":"ATM_HELMET",
+                    "start_score":50,
+                    "no_helmet_score":45,
+                    "helmet_score":55,
+                    "alarm_cooldown_period":120
+                },
+                {
+                    "algo":"BAG_COMPLIANCE",
+                    "start_score":50,
+                    "bag_score":55,
+                    "no_bag_score":45,
+                    "alarm_cooldown_period":120000,
+                    "delete_threshold":10000,
+		                "rroiconfig": [
+                        {
+                            "roi": [
+                                { "x": 0.071, "y": 0.451 },
+                                { "x": 0.407, "y": 0.401 },
+                                { "x": 0.895, "y": 0.986 },
+                                { "x": 0.016, "y": 0.988 }
+                            ],
+                            "_LINEFIRE_COORD_COMMENT_":"Top = 0, Middle = 1, Bottom = 2",
+                            "coord_pos":2
+                        }
+                    ]
+                }
+            ]
+        }
